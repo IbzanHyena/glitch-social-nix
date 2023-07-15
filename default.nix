@@ -1,4 +1,4 @@
-{ lib, stdenv, nodejs-slim, mkYarnPackage, fetchFromGitHub, bundlerEnv, nixosTests
+{ lib, stdenv, nodejs-slim-18_x, mkYarnPackage, fetchFromGitHub, bundlerEnv, nixosTests
 , yarn, callPackage, imagemagick, ffmpeg, file, ruby_3_0, writeShellScript
 , fetchYarnDeps, fixup_yarn_lock
 , brotli
@@ -87,7 +87,7 @@ stdenv.mkDerivation rec {
   };
 
   propagatedBuildInputs = [ imagemagick ffmpeg file mastodonGems.wrappedRuby ];
-  buildInputs = [ mastodonGems nodejs-slim ];
+  buildInputs = [ mastodonGems nodejs-slim-18_x ];
 
   buildPhase = ''
     ln -s $mastodonModules/node_modules node_modules
@@ -127,7 +127,7 @@ stdenv.mkDerivation rec {
   installPhase = let
     run-streaming = writeShellScript "run-streaming.sh" ''
       # NixOS helper script to consistently use the same NodeJS version the package was built with.
-      ${nodejs-slim}/bin/node ./streaming
+      ${nodejs-slim-18_x}/bin/node ./streaming
     '';
   in ''
     mkdir -p $out
