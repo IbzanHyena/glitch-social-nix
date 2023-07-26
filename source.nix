@@ -3,8 +3,8 @@
   src = fetchFromGitHub {
     owner = "glitch-soc";
     repo = "mastodon";
-    rev = "cf9affdeac275cd4057dc57c3b16bf4fa5e9405a";
-    sha256 = "sha256-uA0Yrn3t228c1equsm1GkH/w+rFqyPVUJ8giNsgYTcQ=";
+    rev = "main";
+    hash = "sha256-uA0Yrn3t228c1equsm1GkH/w+rFqyPVUJ8giNsgYTcQ=";
   };
 in applyPatches {
   inherit src;
